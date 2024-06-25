@@ -1,0 +1,31 @@
+﻿<Window x:Class="TestWpfTimeline.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestWpfTimeline"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance Type=local:MainWindow}">
+    <Grid>
+        <StackPanel>
+            <local:TimelineControl x:Name="timeline" 
+                                   VerticalAlignment="Top" 
+                                   Height="10"
+                                   PreferredStepSize="175"
+                                   SizePerSecond="1"
+                                   Scale="{Binding TimelineScale,Mode=OneWay}"/>
+
+            <StackPanel Margin="8">
+                <TextBlock Text="Timeline Scale"/>
+                <TextBox Text="{Binding TimelineScale,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <Slider Minimum="0.1" Maximum="10" SmallChange="0.01" LargeChange="0.1" Value="{Binding TimelineScale}"/>
+            </StackPanel>
+
+            <StackPanel Margin="8">
+                <TextBlock Text="Timeline Offset"/>
+                <Slider Minimum="0" Maximum="3600" SmallChange="0.01" LargeChange="0.1" Value="{Binding TimeOffsetSeconds}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
