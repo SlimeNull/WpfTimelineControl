@@ -118,17 +118,7 @@ namespace TestWpfTimeline
 
             while (currentStepSize > PreferredStepSize * 2)
             {
-                if (stepUnit == StepUnit.Hour && step <= 1)
-                {
-                    step *= 60;
-                    stepUnit = StepUnit.Minute;
-                }
-                else if (stepUnit == StepUnit.Minute && step <= 1)
-                {
-                    step *= 60;
-                    stepUnit = StepUnit.Second;
-                }
-                else if (stepUnit == StepUnit.Second && step <= 1)
+                if (stepUnit == StepUnit.Second && step <= 1)
                 {
                     step *= 1000;
                     stepUnit = StepUnit.Millisecond;
